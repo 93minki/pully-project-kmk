@@ -1,0 +1,11 @@
+### API TEST - Rest Client (VSCode Extension)
+
+@server = http://assignment.mathflat.com
+@problemId = 40735
+@excludeProblemId = 40735,46368
+
+### 문제 리스트 가져오기
+GET {{server}}/problems
+
+### 유사 문제 리스트 가져오기
+GET {{server}}/problems/{{problemId}}/similarity?excludedProblemIds={{excludeProblemId}}

@@ -1,9 +1,9 @@
+import { useProblemStore } from "@/app/stores/problemStore";
 import { getProblemList } from "@/entities/problems/api/problem_api";
-import type { ProblemType } from "@/entities/problems/model/types";
-import { ProblemCard } from "@/shared/ui/ProblemCard";
-import { useEffect, useState } from "react";
+import { ProblemList } from "@/widgets/problem-list/ui/ProblemList";
+import { useEffect } from "react";
 export const MainPage = () => {
-  const [problemList, setProblemList] = useState<ProblemType[]>([]);
+  const { problemList, setProblemList } = useProblemStore();
 
   useEffect(() => {
     const initialFetch = async () => {
@@ -15,19 +15,12 @@ export const MainPage = () => {
       }
     };
     initialFetch();
-  }, []);
+  }, [setProblemList]);
 
   return (
     <div>
       <h1>Main Page</h1>
-      {problemList.map((problem, index) => (
-        <ProblemCard
-          key={problem.id}
-          index={index}
-          problemInfo={problem}
-          actions={<></>}
-        />
-      ))}
+      <ProblemList problemList={problemList} />
     </div>
   );
 };

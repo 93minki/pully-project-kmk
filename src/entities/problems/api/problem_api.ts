@@ -1,4 +1,4 @@
-import { API_URL } from "@/shared/constants";
+import { API_URL } from "@/shared/utils/constants";
 
 export const getProblemList = async () => {
   try {
@@ -17,9 +17,16 @@ export const getProblemList = async () => {
   }
 };
 
-export const getSimilarProblemList = async (problemId: number) => {
+export const getSimilarProblemList = async (
+  problemId: number,
+  excludedProblemIds: number[] = []
+) => {
   try {
-    const response = await fetch(`${API_URL}/problems/${problemId}/similarity`);
+    const response = await fetch(
+      `${API_URL}/problems/${problemId}/similarity?excludedProblemIds=${excludedProblemIds.join(
+        ","
+      )}`
+    );
     if (!response.ok) {
       throw new Error(
         `Similar Problem Fetch Error: ${response.status} ${response.statusText}`

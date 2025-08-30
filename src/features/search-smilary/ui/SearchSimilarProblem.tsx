@@ -1,4 +1,8 @@
-import { useProblemStore, useSimilarProblemStore } from "@/app/index";
+import {
+  useProblemStore,
+  useSelectProblemStore,
+  useSimilarProblemStore,
+} from "@/app/index";
 import { getSimilarProblemList } from "@/entities";
 
 interface SearchSimilarProblemProps {
@@ -10,6 +14,7 @@ export const SearchSmilarProblem = ({
 }: SearchSimilarProblemProps) => {
   const { setSimilarProblemList } = useSimilarProblemStore();
   const { problemIdList } = useProblemStore();
+  const { setSelectedProblemId } = useSelectProblemStore();
 
   const searchSimilarProblem = async () => {
     try {
@@ -18,6 +23,7 @@ export const SearchSmilarProblem = ({
         problemIdList
       );
       setSimilarProblemList(similarProblemList);
+      setSelectedProblemId(problemId);
     } catch (error) {
       console.error("Error", error);
     }

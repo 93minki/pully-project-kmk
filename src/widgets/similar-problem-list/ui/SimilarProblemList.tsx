@@ -1,4 +1,5 @@
 import type { ProblemType } from "@/entities";
+import { ExchangeProblem } from "@/features/exchange-problem/ui/ExchangeProblem";
 import { ProblemCard } from "@/shared";
 
 interface SimilarProblemListProps {
@@ -14,7 +15,11 @@ export const SimilarProblemList = ({
           key={problem.id}
           problemInfo={problem}
           index={index}
-          actions={<></>}
+          actions={
+            <>
+              <ExchangeProblem similarProblemId={problem.id} />
+            </>
+          }
         />
       ))}
     </div>

@@ -18,9 +18,13 @@ export const MainPage = () => {
   }, [setProblemList]);
 
   return (
-    <div>
-      <h1>Main Page</h1>
-      <ProblemList problemList={problemList} />
+    <div className="flex justify-center items-center py-3.5">
+      <div className="flex gap-4 w-[1232px]">
+        <div className="w-[504px] border border-red-500">
+          <span>유사 문제 영역</span>
+        </div>
+        <ProblemList problemList={problemList} />
+      </div>
     </div>
   );
 };

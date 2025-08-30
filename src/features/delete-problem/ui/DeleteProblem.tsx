@@ -1,4 +1,8 @@
-import { useProblemStore, useSelectProblemStore } from "@/app/index";
+import {
+  useProblemStore,
+  useSelectProblemStore,
+  useSimilarProblemStore,
+} from "@/app/index";
 
 interface DeleteProblemProps {
   problemId: number;
@@ -7,6 +11,7 @@ interface DeleteProblemProps {
 export const DeleteProblem = ({ problemId }: DeleteProblemProps) => {
   const { problemList, setProblemList } = useProblemStore();
   const { selectedProblemId, setSelectedProblemId } = useSelectProblemStore();
+  const { setSimilarProblemList } = useSimilarProblemStore();
   const deleteProblem = async () => {
     const updateProblemList = problemList.filter(
       (problem) => problem.id !== problemId
@@ -15,6 +20,7 @@ export const DeleteProblem = ({ problemId }: DeleteProblemProps) => {
       setSelectedProblemId(0);
     }
     setProblemList(updateProblemList);
+    setSimilarProblemList([]);
   };
 
   return <button onClick={deleteProblem}>삭제</button>;

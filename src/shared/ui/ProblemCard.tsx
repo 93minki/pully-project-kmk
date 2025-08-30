@@ -1,4 +1,6 @@
+import { useSelectProblemStore } from "@/app/index";
 import type { ProblemType } from "@/entities";
+import { useEffect } from "react";
 
 interface ProblemCardProps {
   index: number;
@@ -11,6 +13,16 @@ export const ProblemCard = ({
   problemInfo,
   actions,
 }: ProblemCardProps) => {
+  const { selectedProblemId } = useSelectProblemStore();
+
+  useEffect(() => {
+    if (selectedProblemId === problemInfo.id) {
+      console.log("selectedProblemId!!", selectedProblemId);
+    }
+  }, [selectedProblemId]);
+
+  const isSelected = selectedProblemId === problemInfo.id;
+
   const parseLevel = (level: ProblemType["level"]) => {
     switch (level) {
       case 1:
@@ -36,7 +48,9 @@ export const ProblemCard = ({
   };
 
   return (
-    <div>
+    <div
+      className={`${isSelected ? "border-4 border-blue-400 rounded-xl" : ""}`}
+    >
       <div className="flex justify-between items-center bg-[#FAFAFA] rounded-t-xl p-4">
         <span className="shrink-0 px-3 text-xl font-bold">{index + 1}</span>
         <span className="flex-1 px-3 text-sm text-start">
@@ -56,11 +70,13 @@ export const ProblemCard = ({
             {parseProblemType(problemInfo.type)}
           </span>
         </div>
-        <img
-          className="object-contain max-w-2/3"
-          src={problemInfo.problemImageUrl}
-          alt="problem_image"
-        />
+        <div className="flex-1 p-4">
+          <img
+            className="object-contain"
+            src={problemInfo.problemImageUrl}
+            alt="problem_image"
+          />
+        </div>
       </div>
     </div>
   );

@@ -34,7 +34,7 @@ export const ProblemList = ({ problemList }: ProblemListProps) => {
               index={index}
               problemInfo={problem}
               actions={
-                <>  
+                <>
                   <SearchSmilarProblem problemId={problem.id} />
                   <DeleteProblem problemId={problem.id} />
                 </>

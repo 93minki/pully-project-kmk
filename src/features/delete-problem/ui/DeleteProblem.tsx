@@ -6,12 +6,12 @@ interface DeleteProblemProps {
 
 export const DeleteProblem = ({ problemId }: DeleteProblemProps) => {
   const { problemList, setProblemList } = useProblemStore();
-  const { setSelectedProblemId } = useSelectProblemStore();
+  const { selectedProblemId, setSelectedProblemId } = useSelectProblemStore();
   const deleteProblem = async () => {
     const updateProblemList = problemList.filter(
       (problem) => problem.id !== problemId
     );
-    if (updateProblemList.length === 0) {
+    if (updateProblemList.length === 0 || problemId === selectedProblemId) {
       setSelectedProblemId(0);
     }
     setProblemList(updateProblemList);

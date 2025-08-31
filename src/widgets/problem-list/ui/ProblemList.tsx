@@ -1,3 +1,4 @@
+import { useSelectProblemStore } from "@/app/index";
 import type { ProblemType } from "@/entities";
 import { DeleteProblem, SearchSmilarProblem } from "@/features";
 import { ProblemCard } from "@/shared";
@@ -9,6 +10,8 @@ interface ProblemListProps {
 
 export const ProblemList = ({ problemList }: ProblemListProps) => {
   // Delete Action 에서 problemList의 길이가 0일 경우 selectedProblemId를 0으로 설정해야 함.
+
+  const { selectedProblemId } = useSelectProblemStore();
 
   const levelCount = useMemo(() => {
     return problemList.reduce(
@@ -24,7 +27,7 @@ export const ProblemList = ({ problemList }: ProblemListProps) => {
   }, [problemList]);
 
   return (
-    <div className="flex flex-col gap-4 p-4 w-[712px] border border-[#5C5C5C] bg-[#5C5C5C] rounded-xl relative min-h-screen">
+    <div className="flex flex-col gap-4 p-4 w-[480px] xl:w-[712px] border border-[#5C5C5C] bg-[#5C5C5C] rounded-xl relative min-h-screen">
       <span className="text-white font-bold">학습지 상세 편집</span>
       <div className="flex-1 flex flex-col gap-4">
         {problemList.length > 0 ? (
@@ -33,33 +36,42 @@ export const ProblemList = ({ problemList }: ProblemListProps) => {
               key={problem.id}
               index={index}
               problemInfo={problem}
+              isActive={selectedProblemId === problem.id}
               actions={
                 <>
-                  <SearchSmilarProblem problemId={problem.id} />
+                  <SearchSmilarProblem
+                    problemId={problem.id}
+                    isActive={selectedProblemId === problem.id}
+                  />
                   <DeleteProblem problemId={problem.id} />
                 </>
               }
             />
           ))
         ) : (
-          <div>
-            학습지 문제수가 없습니다. 다음 단계로 넘어가기 위해 문제를
-            추가해주세요.
+          <div className="min-h-screen flex flex-col justify-center items-center text-white text-sm">
+            <span>학습지 문제수가 없습니다.</span>
+            <span>다음 단계로 넘어가기 위해 문제를 추가해주세요.</span>
           </div>
         )}
       </div>
-      <div className="flex justify-end items-center sticky bottom-0 left-0 right-0 bg-[#5C5C5C] h-16 ">
+      <div className="flex px-2 justify-end items-center sticky bottom-0 left-0 right-0 bg-[#5C5C5C] h-16 ">
         {problemList.length > 0 && (
-          <div>
-            <span>하 {levelCount[1]} ·</span>
-            <span> 중하 {levelCount[2]} ·</span>
-            <span> 중 {levelCount[3]} ·</span>
-            <span> 상 {levelCount[4]} ·</span>
-            <span> 최상 {levelCount[5]} |</span>
+          <div className="text-[#959595]">
+            <span>하 {levelCount[1]}</span>
+            <span className="mx-1">·</span>
+            <span>중하 {levelCount[2]}</span>
+            <span className="mx-1">·</span>
+            <span>중 {levelCount[3]}</span>
+            <span className="mx-1">·</span>
+            <span>상 {levelCount[4]}</span>
+            <span className="mx-1">·</span>
+            <span>최상 {levelCount[5]}</span>
+            <span className="mx-1">|</span>
           </div>
         )}
         <span
-          className={`${
+          className={`font-bold ${
             problemList.length > 0 ? "text-white" : "text-[#FD5354]"
           }`}
         >

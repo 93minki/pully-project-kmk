@@ -4,13 +4,16 @@ import {
   useSimilarProblemStore,
 } from "@/app/index";
 import { getSimilarProblemList } from "@/entities";
+import { PlusIcon } from "@/shared";
 
 interface SearchSimilarProblemProps {
   problemId: number;
+  isActive: boolean;
 }
 
 export const SearchSmilarProblem = ({
   problemId,
+  isActive,
 }: SearchSimilarProblemProps) => {
   const { setSimilarProblemList } = useSimilarProblemStore();
   const { problemIdList } = useProblemStore();
@@ -29,5 +32,15 @@ export const SearchSmilarProblem = ({
     }
   };
 
-  return <button onClick={searchSimilarProblem}>유사문제</button>;
+  return (
+    <div className="flex gap-1 justify-center items-center">
+      <PlusIcon color={isActive ? "#00ABFF" : "#C0C0C0"} />
+      <button
+        onClick={searchSimilarProblem}
+        className={`text-xs  ${isActive ? "text-[#00ABFF]" : "text-[#959595]"}`}
+      >
+        유사문제
+      </button>
+    </div>
+  );
 };

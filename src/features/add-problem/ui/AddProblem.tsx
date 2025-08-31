@@ -3,6 +3,7 @@ import {
   useSelectProblemStore,
   useSimilarProblemStore,
 } from "@/app/index";
+import { PlusIcon } from "@/shared";
 
 interface AddProblemProps {
   similarProblemId: number;
@@ -50,5 +51,13 @@ export const AddProblem = ({ similarProblemId }: AddProblemProps) => {
     setSimilarProblemList(updatedSimilarProblemList);
   };
 
-  return <button onClick={addProblem}>추가</button>;
+  return (
+    <button
+      onClick={addProblem}
+      className="flex gap-1 justify-center items-center cursor-pointer"
+    >
+      <PlusIcon />
+      <span className="text-xs text-[#959595]">추가</span>
+    </button>
+  );
 };

@@ -3,6 +3,7 @@ import {
   useSelectProblemStore,
   useSimilarProblemStore,
 } from "@/app/index";
+import { TrashIcon } from "@/shared/ui/TrashIcon";
 
 interface DeleteProblemProps {
   problemId: number;
@@ -23,5 +24,13 @@ export const DeleteProblem = ({ problemId }: DeleteProblemProps) => {
     setSimilarProblemList([]);
   };
 
-  return <button onClick={deleteProblem}>삭제</button>;
+  return (
+    <button
+      onClick={deleteProblem}
+      className="flex gap-1 justify-center items-center"
+    >
+      <TrashIcon />
+      <span className="text-xs text-[#959595]">삭제</span>
+    </button>
+  );
 };

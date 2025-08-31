@@ -18,24 +18,9 @@ export const MainPage = () => {
     initialFetch();
   }, [setProblemList]);
 
-  // useEffect(() => {
-  //   if (selectedProblemId !== 0) {
-  //     const fetchSimilarProblemList = async () => {
-  //       try {
-  //         const response = await getSimilarProblemList(selectedProblemId);
-  //         console.log("response", response);
-  //         setSimilarProblemList(response);
-  //       } catch (error) {
-  //         console.error("Error", error);
-  //       }
-  //     };
-  //     fetchSimilarProblemList();
-  //   }
-  // }, [selectedProblemId, setSimilarProblemList]);
-
   return (
     <div className="flex justify-center items-center py-3.5">
-      <div className="flex gap-4 w-[1232px]">
+      <div className="flex gap-4">
         <SimilarProblemList similarProblemList={similarProblemList} />
         <ProblemList problemList={problemList} />
       </div>

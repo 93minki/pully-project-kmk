@@ -10,10 +10,17 @@ interface AddProblemProps {
 }
 
 export const AddProblem = ({ similarProblemId }: AddProblemProps) => {
-  const { problemList, setProblemList } = useProblemStore();
-  const { similarProblemList, setSimilarProblemList } =
-    useSimilarProblemStore();
-  const { selectedProblemId } = useSelectProblemStore();
+  const problemList = useProblemStore((state) => state.problemList);
+  const setProblemList = useProblemStore((state) => state.setProblemList);
+  const similarProblemList = useSimilarProblemStore(
+    (state) => state.similarProblemList
+  );
+  const setSimilarProblemList = useSimilarProblemStore(
+    (state) => state.setSimilarProblemList
+  );
+  const selectedProblemId = useSelectProblemStore(
+    (state) => state.selectedProblemId
+  );
 
   const addProblem = async () => {
     const selectedProblem = problemList.find(

@@ -4,13 +4,12 @@ import { DeleteProblem, SearchSmilarProblem } from "@/features";
 import { Loading, ProblemCard } from "@/shared";
 import { useMemo } from "react";
 
-interface ProblemListProps {
-  problemList: ProblemType[];
-}
-
-export const ProblemList = ({ problemList }: ProblemListProps) => {
-  const { selectedProblemId } = useSelectProblemStore();
-  const { isLoading } = useProblemStore();
+export const ProblemList = () => {
+  const problemList = useProblemStore((state) => state.problemList);
+  const isLoading = useProblemStore((state) => state.isLoading);
+  const selectedProblemId = useSelectProblemStore(
+    (state) => state.selectedProblemId
+  );
 
   const levelCount = useMemo(() => {
     return problemList.reduce(

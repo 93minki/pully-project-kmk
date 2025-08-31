@@ -12,10 +12,20 @@ interface ExchangeProblemProps {
 }
 
 export const ExchangeProblem = ({ similarProblemId }: ExchangeProblemProps) => {
-  const { problemList, setProblemList } = useProblemStore();
-  const { similarProblemList, setSimilarProblemList } =
-    useSimilarProblemStore();
-  const { selectedProblemId, setSelectedProblemId } = useSelectProblemStore();
+  const problemList = useProblemStore((state) => state.problemList);
+  const setProblemList = useProblemStore((state) => state.setProblemList);
+  const similarProblemList = useSimilarProblemStore(
+    (state) => state.similarProblemList
+  );
+  const setSimilarProblemList = useSimilarProblemStore(
+    (state) => state.setSimilarProblemList
+  );
+  const selectedProblemId = useSelectProblemStore(
+    (state) => state.selectedProblemId
+  );
+  const setSelectedProblemId = useSelectProblemStore(
+    (state) => state.setSelectedProblemId
+  );
 
   const exchangeProblem = async () => {
     const selectedProblem = problemList.find(

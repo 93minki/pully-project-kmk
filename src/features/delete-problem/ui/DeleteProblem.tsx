@@ -10,9 +10,18 @@ interface DeleteProblemProps {
 }
 
 export const DeleteProblem = ({ problemId }: DeleteProblemProps) => {
-  const { problemList, setProblemList } = useProblemStore();
-  const { selectedProblemId, setSelectedProblemId } = useSelectProblemStore();
-  const { setSimilarProblemList } = useSimilarProblemStore();
+  const problemList = useProblemStore((state) => state.problemList);
+  const setProblemList = useProblemStore((state) => state.setProblemList);
+  const selectedProblemId = useSelectProblemStore(
+    (state) => state.selectedProblemId
+  );
+  const setSelectedProblemId = useSelectProblemStore(
+    (state) => state.setSelectedProblemId
+  );
+  const setSimilarProblemList = useSimilarProblemStore(
+    (state) => state.setSimilarProblemList
+  );
+
   const deleteProblem = async () => {
     const updateProblemList = problemList.filter(
       (problem) => problem.id !== problemId

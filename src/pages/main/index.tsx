@@ -1,11 +1,11 @@
-import { useProblemStore, useSimilarProblemStore } from "@/app/index";
+import { useProblemStore } from "@/app/index";
 import { getProblemList } from "@/entities";
 import { ProblemList, SimilarProblemList } from "@/widgets";
 import { useEffect } from "react";
 
 export const MainPage = () => {
-  const { problemList, setProblemList, setIsLoading } = useProblemStore();
-  const { similarProblemList } = useSimilarProblemStore();
+  const setProblemList = useProblemStore((state) => state.setProblemList);
+  const setIsLoading = useProblemStore((state) => state.setIsLoading);
 
   useEffect(() => {
     const initialFetch = async () => {
@@ -25,8 +25,8 @@ export const MainPage = () => {
   return (
     <div className="flex justify-center items-center p-3.5 h-screen">
       <div className="flex gap-4 h-full">
-        <SimilarProblemList similarProblemList={similarProblemList} />
-        <ProblemList problemList={problemList} />
+        <SimilarProblemList />
+        <ProblemList />
       </div>
     </div>
   );

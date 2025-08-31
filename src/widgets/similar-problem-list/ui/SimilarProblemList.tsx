@@ -1,15 +1,12 @@
 import { useSimilarProblemStore } from "@/app/index";
-import type { ProblemType } from "@/entities";
 import { AddProblem, ExchangeProblem } from "@/features";
 import { Loading, PlusIcon, ProblemCard } from "@/shared";
 
-interface SimilarProblemListProps {
-  similarProblemList: ProblemType[];
-}
-export const SimilarProblemList = ({
-  similarProblemList,
-}: SimilarProblemListProps) => {
-  const { isLoading } = useSimilarProblemStore();
+export const SimilarProblemList = () => {
+  const similarProblemList = useSimilarProblemStore(
+    (state) => state.similarProblemList
+  );
+  const isLoading = useSimilarProblemStore((state) => state.isLoading);
 
   if (isLoading) {
     return <Loading />;

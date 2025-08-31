@@ -15,9 +15,17 @@ export const SearchSmilarProblem = ({
   problemId,
   isActive,
 }: SearchSimilarProblemProps) => {
-  const { setSimilarProblemList, setIsLoading } = useSimilarProblemStore();
-  const { problemIdList } = useProblemStore();
-  const { selectedProblemId, setSelectedProblemId } = useSelectProblemStore();
+  const setSimilarProblemList = useSimilarProblemStore(
+    (state) => state.setSimilarProblemList
+  );
+  const setIsLoading = useSimilarProblemStore((state) => state.setIsLoading);
+  const problemIdList = useProblemStore((state) => state.problemIdList);
+  const selectedProblemId = useSelectProblemStore(
+    (state) => state.selectedProblemId
+  );
+  const setSelectedProblemId = useSelectProblemStore(
+    (state) => state.setSelectedProblemId
+  );
 
   const searchSimilarProblem = async () => {
     if (selectedProblemId === problemId) {

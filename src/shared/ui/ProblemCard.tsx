@@ -14,15 +14,6 @@ export const ProblemCard = ({
   actions,
   isActive = false,
 }: ProblemCardProps) => {
-  const parseProblemType = (type: ProblemType["type"]) => {
-    switch (type) {
-      case 1:
-        return "객관식";
-      case 2:
-        return "주관식";
-    }
-  };
-
   return (
     <div>
       <div
@@ -30,8 +21,8 @@ export const ProblemCard = ({
           isActive ? "border-[3px] border-blue border-b-0" : ""
         }`}
       >
-        <span className="shrink-0 px-3 text-xl font-bold">{index + 1}</span>
-        <span className="flex-1 px-3 text-sm text-start text-gray-dark">
+        <span className="shrink-0 px-3 h4-20-bold">{index + 1}</span>
+        <span className="flex-1 px-3 body2-14-regular text-start text-gray-dark truncate">
           {problemInfo.title}
         </span>
         <div className="shrink-0 flex gap-3 text-xs">{actions}</div>
@@ -43,17 +34,17 @@ export const ProblemCard = ({
       >
         <div className="flex flex-col text-xs gap-1 px-4 shrink-0">
           <span
-            className={`w-10 h-5 leading-5 text-center bg-gray-bg-light rounded-sm ${
+            className={`w-10 h-5 caption1-12-regular bg-gray-bg-light text-center rounded-sm ${
               PROBLEM_LEVEL_INFO[problemInfo.level].color
             }`}
           >
             {PROBLEM_LEVEL_INFO[problemInfo.level].name}
           </span>
-          <span className="w-10 h-5 leading-5 text-gray-medium text-center bg-gray-bg-light rounded-sm">
+          <span className="w-10 h-5 caption1-12-regular text-gray-medium text-center bg-gray-bg-light rounded-sm">
             {problemInfo.answerRate}%
           </span>
-          <span className="w-10 h-5 leading-5 text-gray-medium text-center bg-gray-bg-light rounded-sm">
-            {parseProblemType(problemInfo.type)}
+          <span className="w-10 h-5 caption1-12-regular text-gray-light text-center bg-gray-bg-light rounded-sm">
+            {problemInfo.type === 1 ? "객관식" : "주관식"}
           </span>
         </div>
         <div className="px-4 max-w-2/3">

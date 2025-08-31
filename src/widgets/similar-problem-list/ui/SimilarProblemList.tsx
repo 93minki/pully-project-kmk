@@ -18,7 +18,7 @@ export const SimilarProblemList = ({
   return (
     <div className="h-full flex flex-col gap-4 p-4 w-[480px] xl:w-[504px] border border-gray-bg bg-gray-bg rounded-xl">
       {similarProblemList.length > 0 && (
-        <span className="font-bold text-gray-dark">유사 문항</span>
+        <span className="body1-16-bold text-gray-dark">유사 문항</span>
       )}
       <div className="flex-1 flex flex-col gap-4 overflow-scroll">
         {similarProblemList.length > 0 ? (

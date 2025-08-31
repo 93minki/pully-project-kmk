@@ -31,7 +31,7 @@ export const ProblemList = ({ problemList }: ProblemListProps) => {
 
   return (
     <div className="h-full flex flex-col px-4 pt-4 w-[480px] xl:w-[712px] border border-gray bg-gray rounded-xl">
-      <span className="text-white font-bold">학습지 상세 편집</span>
+      <span className="text-white body1-16-bold">학습지 상세 편집</span>
       <div className="flex-1 flex flex-col gap-4 overflow-scroll mt-4">
         {problemList.length > 0 ? (
           problemList.map((problem, index) => (
@@ -60,7 +60,7 @@ export const ProblemList = ({ problemList }: ProblemListProps) => {
       </div>
       <div className="flex px-2 justify-end items-center  bg-gray h-16 ">
         {problemList.length > 0 && (
-          <div className="text-gray-light">
+          <div className="text-gray-light body1-16-regular">
             <span>하 {levelCount[1]}</span>
             <span className="mx-1">·</span>
             <span>중하 {levelCount[2]}</span>
@@ -74,11 +74,11 @@ export const ProblemList = ({ problemList }: ProblemListProps) => {
           </div>
         )}
         <span
-          className={`font-bold ${
+          className={`body1-16-bold ${
             problemList.length > 0 ? "text-white" : "text-red"
           }`}
         >
-          문제 수 {problemList.length}개
+          문제 수 {problemList.length} 개
         </span>
       </div>
     </div>

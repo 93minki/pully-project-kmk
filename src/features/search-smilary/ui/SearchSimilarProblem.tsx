@@ -40,7 +40,9 @@ export const SearchSmilarProblem = ({
       <PlusIcon color={isActive ? "#00abff" : "#c0c0c0"} />
       <button
         onClick={searchSimilarProblem}
-        className={`text-xs  ${isActive ? "text-blue" : "text-gray-light"}`}
+        className={`caption1-12-regular ${
+          isActive ? "text-blue" : "text-gray-light"
+        }`}
       >
         유사문제
       </button>

@@ -21,7 +21,7 @@ export const ExchangeIcon = ({
       <path
         d="M4.66 7.33337L2 10L4.66 12.6667V10.6667H9.33333V9.33337H4.66V7.33337ZM14 6.00004L11.34 3.33337V5.33337H6.66667V6.66671H11.34V8.66671L14 6.00004Z"
         fill={color}
-        fill-opacity="0.87"
+        fillOpacity="0.87"
       />
     </svg>
   );

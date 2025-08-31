@@ -2,7 +2,6 @@ import { useProblemStore, useSelectProblemStore } from "@/app/index";
 import type { ProblemType } from "@/entities";
 import { DeleteProblem, SearchSmilarProblem } from "@/features";
 import { Loading, ProblemCard } from "@/shared";
-import { useMemo } from "react";
 
 export const ProblemList = () => {
   const problemList = useProblemStore((state) => state.problemList);
@@ -11,18 +10,16 @@ export const ProblemList = () => {
     (state) => state.selectedProblemId
   );
 
-  const levelCount = useMemo(() => {
-    return problemList.reduce(
-      (acc, problem) => {
-        acc[problem.level] = acc[problem.level] + 1;
-        return acc;
-      },
-      { "1": 0, "2": 0, "3": 0, "4": 0, "5": 0 } as Record<
-        ProblemType["level"],
-        number
-      >
-    );
-  }, [problemList]);
+  const levelCount = problemList.reduce(
+    (acc, problem) => {
+      acc[problem.level] = acc[problem.level] + 1;
+      return acc;
+    },
+    { "1": 0, "2": 0, "3": 0, "4": 0, "5": 0 } as Record<
+      ProblemType["level"],
+      number
+    >
+  );
 
   if (isLoading) {
     return <Loading />;

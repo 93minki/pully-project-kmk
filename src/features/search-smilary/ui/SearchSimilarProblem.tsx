@@ -28,6 +28,7 @@ export const SearchSmilarProblem = ({
   );
 
   const searchSimilarProblem = async () => {
+    console.log("problemId", problemId);
     if (selectedProblemId === problemId) {
       return;
     }
@@ -35,7 +36,7 @@ export const SearchSmilarProblem = ({
     try {
       const similarProblemList = await getSimilarProblemList(
         problemId,
-        problemIdList
+        problemIdList.filter((id) => id !== problemId)
       );
       setSimilarProblemList(similarProblemList);
       setSelectedProblemId(problemId);

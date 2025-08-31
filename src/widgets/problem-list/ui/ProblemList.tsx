@@ -1,7 +1,8 @@
-import { useSelectProblemStore } from "@/app/index";
+import { useProblemStore, useSelectProblemStore } from "@/app/index";
 import type { ProblemType } from "@/entities";
 import { DeleteProblem, SearchSmilarProblem } from "@/features";
 import { ProblemCard } from "@/shared";
+import { Loading } from "@/shared/ui/Loading";
 import { useMemo } from "react";
 
 interface ProblemListProps {
@@ -12,6 +13,7 @@ export const ProblemList = ({ problemList }: ProblemListProps) => {
   // Delete Action 에서 problemList의 길이가 0일 경우 selectedProblemId를 0으로 설정해야 함.
 
   const { selectedProblemId } = useSelectProblemStore();
+  const { isLoading } = useProblemStore();
 
   const levelCount = useMemo(() => {
     return problemList.reduce(
@@ -25,6 +27,10 @@ export const ProblemList = ({ problemList }: ProblemListProps) => {
       >
     );
   }, [problemList]);
+
+  if (isLoading) {
+    return <Loading />;
+  }
 
   return (
     <div className="flex flex-col gap-4 p-4 w-[480px] xl:w-[712px] border border-[#5C5C5C] bg-[#5C5C5C] rounded-xl relative min-h-screen">

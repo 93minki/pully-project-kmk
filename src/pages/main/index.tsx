@@ -4,19 +4,23 @@ import { ProblemList, SimilarProblemList } from "@/widgets";
 import { useEffect } from "react";
 
 export const MainPage = () => {
-  const { problemList, setProblemList } = useProblemStore();
+  const { problemList, setProblemList, setIsLoading } = useProblemStore();
   const { similarProblemList } = useSimilarProblemStore();
+
   useEffect(() => {
     const initialFetch = async () => {
+      setIsLoading(true);
       try {
         const response = await getProblemList();
         setProblemList(response);
       } catch (error) {
         console.error("Error", error);
+      } finally {
+        setIsLoading(false);
       }
     };
     initialFetch();
-  }, [setProblemList]);
+  }, [setProblemList, setIsLoading]);
 
   return (
     <div className="flex justify-center items-center py-3.5">

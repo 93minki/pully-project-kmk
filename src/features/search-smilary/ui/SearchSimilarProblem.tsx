@@ -15,11 +15,12 @@ export const SearchSmilarProblem = ({
   problemId,
   isActive,
 }: SearchSimilarProblemProps) => {
-  const { setSimilarProblemList } = useSimilarProblemStore();
+  const { setSimilarProblemList, setIsLoading } = useSimilarProblemStore();
   const { problemIdList } = useProblemStore();
   const { setSelectedProblemId } = useSelectProblemStore();
 
   const searchSimilarProblem = async () => {
+    setIsLoading(true);
     try {
       const similarProblemList = await getSimilarProblemList(
         problemId,
@@ -29,6 +30,8 @@ export const SearchSmilarProblem = ({
       setSelectedProblemId(problemId);
     } catch (error) {
       console.error("Error", error);
+    } finally {
+      setIsLoading(false);
     }
   };
 

@@ -1,7 +1,9 @@
+import { useSimilarProblemStore } from "@/app/index";
 import type { ProblemType } from "@/entities";
 import { AddProblem } from "@/features/add-problem/ui/AddProblem";
 import { ExchangeProblem } from "@/features/exchange-problem/ui/ExchangeProblem";
 import { PlusIcon, ProblemCard } from "@/shared";
+import { Loading } from "@/shared/ui/Loading";
 
 interface SimilarProblemListProps {
   similarProblemList: ProblemType[];
@@ -9,6 +11,12 @@ interface SimilarProblemListProps {
 export const SimilarProblemList = ({
   similarProblemList,
 }: SimilarProblemListProps) => {
+  const { isLoading } = useSimilarProblemStore();
+
+  if (isLoading) {
+    return <Loading />;
+  }
+
   return (
     <div className="flex flex-col gap-4 p-4 w-[480px] xl:w-[504px] border border-[#E8E8E8] bg-[#E8E8E8] rounded-xl min-h-screen">
       {similarProblemList.length > 0 && (

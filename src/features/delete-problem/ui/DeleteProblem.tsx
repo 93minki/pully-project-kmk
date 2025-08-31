@@ -30,7 +30,7 @@ export const DeleteProblem = ({ problemId }: DeleteProblemProps) => {
       className="flex gap-1 justify-center items-center"
     >
       <TrashIcon />
-      <span className="text-xs text-[#959595]">삭제</span>
+      <span className="text-xs text-gray-light">삭제</span>
     </button>
   );
 };

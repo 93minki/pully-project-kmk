@@ -6,7 +6,7 @@ interface TrashIconProps {
 
 export const TrashIcon = ({
   size = 16,
-  color = "#C0C0C0",
+  color = "#c0c0c0",
   className = "",
 }: TrashIconProps) => {
   return (

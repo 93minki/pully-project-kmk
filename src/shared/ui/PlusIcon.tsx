@@ -6,7 +6,7 @@ interface PlusIconProps {
 
 export const PlusIcon = ({
   size = 16,
-  color = "#C0C0C0",
+  color = "#c0c0c0",
   className = "",
 }: PlusIconProps) => {
   return (

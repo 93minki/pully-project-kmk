@@ -57,7 +57,7 @@ export const AddProblem = ({ similarProblemId }: AddProblemProps) => {
       className="flex gap-1 justify-center items-center cursor-pointer"
     >
       <PlusIcon />
-      <span className="text-xs text-[#959595]">추가</span>
+      <span className="text-xs text-gray-light">추가</span>
     </button>
   );
 };

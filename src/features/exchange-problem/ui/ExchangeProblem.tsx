@@ -55,7 +55,7 @@ export const ExchangeProblem = ({ similarProblemId }: ExchangeProblemProps) => {
       className="flex gap-1 justify-center items-center cursor-pointer"
     >
       <ExchangeIcon />
-      <span className="text-xs text-[#959595]">교체</span>
+      <span className="text-xs text-gray-light">교체</span>
     </button>
   );
 };

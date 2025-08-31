@@ -5,4 +5,18 @@
     "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans",
     "Apple SD Gothic Neo", "Malgun Gothic", "Segoe UI Emoji", "Segoe UI Symbol",
     "Noto Color Emoji", sans-serif;
+
+  --color-blue: #00abff;
+  --color-red: #fd5354;
+  --color-teal: #54c0b1;
+  --color-orange: #ffc64d;
+
+  --color-gray-dark: #333333;
+  --color-gray: #5c5c5c;
+  --color-gray-medium: #707070;
+  --color-gray-light: #959595;
+  --color-gray-lighter: #c0c0c0;
+  --color-gray-lightest: #e0e0e0;
+  --color-gray-bg: #e8e8e8;
+  --color-gray-bg-light: #fafafa;
 }

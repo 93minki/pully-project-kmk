@@ -37,10 +37,10 @@ export const SearchSmilarProblem = ({
 
   return (
     <div className="flex gap-1 justify-center items-center">
-      <PlusIcon color={isActive ? "#00ABFF" : "#C0C0C0"} />
+      <PlusIcon color={isActive ? "#00abff" : "#c0c0c0"} />
       <button
         onClick={searchSimilarProblem}
-        className={`text-xs  ${isActive ? "text-[#00ABFF]" : "text-[#959595]"}`}
+        className={`text-xs  ${isActive ? "text-blue" : "text-gray-light"}`}
       >
         유사문제
       </button>

@@ -44,9 +44,11 @@ export const SimilarProblemList = ({
                   유사문제
                 </span>
               </div>
-              <span className="text-sm text-gray-dark">버튼을 누르면</span>
+              <span className="body2-14-regular text-gray-dark">
+                버튼을 누르면
+              </span>
             </div>
-            <span className="text-sm text-gray-dark">
+            <span className="body2-14-regular text-gray-dark">
               문제를 추가 또는 교체할수 있습니다.
             </span>
           </div>

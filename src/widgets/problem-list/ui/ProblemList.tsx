@@ -52,13 +52,13 @@ export const ProblemList = ({ problemList }: ProblemListProps) => {
             />
           ))
         ) : (
-          <div className="flex flex-col justify-center items-center text-white text-sm">
+          <div className="flex-1 flex flex-col justify-center items-center text-white body2-14-regular">
             <span>학습지 문제수가 없습니다.</span>
             <span>다음 단계로 넘어가기 위해 문제를 추가해주세요.</span>
           </div>
         )}
       </div>
-      <div className="flex px-2 justify-end items-center  bg-gray h-16 ">
+      <div className="flex px-2 justify-end items-center bg-gray h-16 ">
         {problemList.length > 0 && (
           <div className="text-gray-light body1-16-regular">
             <span>하 {levelCount[1]}</span>

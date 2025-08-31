@@ -27,7 +27,7 @@ export const DeleteProblem = ({ problemId }: DeleteProblemProps) => {
   return (
     <button
       onClick={deleteProblem}
-      className="flex gap-1 justify-center items-center"
+      className="flex gap-1 justify-center items-center cursor-pointer"
     >
       <TrashIcon />
       <span className="text-xs text-gray-light">삭제</span>

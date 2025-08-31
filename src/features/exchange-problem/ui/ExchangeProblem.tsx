@@ -5,16 +5,27 @@ import {
   useSelectProblemStore,
   useSimilarProblemStore,
 } from "@/app/index";
+import { ExchangeIcon } from "@/shared";
 
 interface ExchangeProblemProps {
   similarProblemId: number;
 }
 
 export const ExchangeProblem = ({ similarProblemId }: ExchangeProblemProps) => {
-  const { problemList, setProblemList } = useProblemStore();
-  const { similarProblemList, setSimilarProblemList } =
-    useSimilarProblemStore();
-  const { selectedProblemId, setSelectedProblemId } = useSelectProblemStore();
+  const problemList = useProblemStore((state) => state.problemList);
+  const setProblemList = useProblemStore((state) => state.setProblemList);
+  const similarProblemList = useSimilarProblemStore(
+    (state) => state.similarProblemList
+  );
+  const setSimilarProblemList = useSimilarProblemStore(
+    (state) => state.setSimilarProblemList
+  );
+  const selectedProblemId = useSelectProblemStore(
+    (state) => state.selectedProblemId
+  );
+  const setSelectedProblemId = useSelectProblemStore(
+    (state) => state.setSelectedProblemId
+  );
 
   const exchangeProblem = async () => {
     const selectedProblem = problemList.find(
@@ -48,5 +59,13 @@ export const ExchangeProblem = ({ similarProblemId }: ExchangeProblemProps) => {
     setSelectedProblemId(similarProblemId);
   };
 
-  return <button onClick={exchangeProblem}>교체</button>;
+  return (
+    <button
+      onClick={exchangeProblem}
+      className="flex gap-1 justify-center items-center cursor-pointer"
+    >
+      <ExchangeIcon />
+      <span className="text-xs text-gray-light">교체</span>
+    </button>
+  );
 };

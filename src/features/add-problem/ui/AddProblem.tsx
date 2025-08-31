@@ -3,16 +3,24 @@ import {
   useSelectProblemStore,
   useSimilarProblemStore,
 } from "@/app/index";
+import { PlusIcon } from "@/shared";
 
 interface AddProblemProps {
   similarProblemId: number;
 }
 
 export const AddProblem = ({ similarProblemId }: AddProblemProps) => {
-  const { problemList, setProblemList } = useProblemStore();
-  const { similarProblemList, setSimilarProblemList } =
-    useSimilarProblemStore();
-  const { selectedProblemId } = useSelectProblemStore();
+  const problemList = useProblemStore((state) => state.problemList);
+  const setProblemList = useProblemStore((state) => state.setProblemList);
+  const similarProblemList = useSimilarProblemStore(
+    (state) => state.similarProblemList
+  );
+  const setSimilarProblemList = useSimilarProblemStore(
+    (state) => state.setSimilarProblemList
+  );
+  const selectedProblemId = useSelectProblemStore(
+    (state) => state.selectedProblemId
+  );
 
   const addProblem = async () => {
     const selectedProblem = problemList.find(
@@ -50,5 +58,13 @@ export const AddProblem = ({ similarProblemId }: AddProblemProps) => {
     setSimilarProblemList(updatedSimilarProblemList);
   };
 
-  return <button onClick={addProblem}>추가</button>;
+  return (
+    <button
+      onClick={addProblem}
+      className="flex gap-1 justify-center items-center cursor-pointer"
+    >
+      <PlusIcon />
+      <span className="text-xs text-gray-light">추가</span>
+    </button>
+  );
 };

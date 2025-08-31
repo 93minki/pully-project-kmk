@@ -1,4 +1,4 @@
-import { API_URL } from "@/shared/utils/constants";
+import { API_URL } from "@/shared";
 
 export const getProblemList = async () => {
   try {

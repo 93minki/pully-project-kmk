@@ -3,7 +3,7 @@ import {
   useSelectProblemStore,
   useSimilarProblemStore,
 } from "@/app/index";
-import { TrashIcon } from "@/shared/ui/TrashIcon";
+import { TrashIcon } from "@/shared";
 
 interface DeleteProblemProps {
   problemId: number;

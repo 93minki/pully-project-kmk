@@ -1,4 +1,4 @@
-import type { ProblemType } from "@/entities/problems/model/types";
+import type { ProblemType } from "@/entities";
 import { create } from "zustand";
 
 type State = {

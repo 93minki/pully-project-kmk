@@ -1,8 +1,7 @@
 import { useProblemStore, useSelectProblemStore } from "@/app/index";
 import type { ProblemType } from "@/entities";
 import { DeleteProblem, SearchSmilarProblem } from "@/features";
-import { ProblemCard } from "@/shared";
-import { Loading } from "@/shared/ui/Loading";
+import { Loading, ProblemCard } from "@/shared";
 import { useMemo } from "react";
 
 interface ProblemListProps {
@@ -10,8 +9,6 @@ interface ProblemListProps {
 }
 
 export const ProblemList = ({ problemList }: ProblemListProps) => {
-  // Delete Action 에서 problemList의 길이가 0일 경우 selectedProblemId를 0으로 설정해야 함.
-
   const { selectedProblemId } = useSelectProblemStore();
   const { isLoading } = useProblemStore();
 
@@ -33,9 +30,9 @@ export const ProblemList = ({ problemList }: ProblemListProps) => {
   }
 
   return (
-    <div className="flex flex-col gap-4 p-4 w-[480px] xl:w-[712px] border border-[#5C5C5C] bg-[#5C5C5C] rounded-xl relative min-h-screen">
+    <div className="h-full flex flex-col p-4 w-[480px] xl:w-[712px] border border-[#5C5C5C] bg-[#5C5C5C] rounded-xl">
       <span className="text-white font-bold">학습지 상세 편집</span>
-      <div className="flex-1 flex flex-col gap-4">
+      <div className="flex-1 flex flex-col gap-4 overflow-scroll mt-4">
         {problemList.length > 0 ? (
           problemList.map((problem, index) => (
             <ProblemCard
@@ -55,13 +52,13 @@ export const ProblemList = ({ problemList }: ProblemListProps) => {
             />
           ))
         ) : (
-          <div className="min-h-screen flex flex-col justify-center items-center text-white text-sm">
+          <div className="flex flex-col justify-center items-center text-white text-sm">
             <span>학습지 문제수가 없습니다.</span>
             <span>다음 단계로 넘어가기 위해 문제를 추가해주세요.</span>
           </div>
         )}
       </div>
-      <div className="flex px-2 justify-end items-center sticky bottom-0 left-0 right-0 bg-[#5C5C5C] h-16 ">
+      <div className="flex px-2 justify-end items-center  bg-[#5C5C5C] h-16 ">
         {problemList.length > 0 && (
           <div className="text-[#959595]">
             <span>하 {levelCount[1]}</span>

@@ -23,8 +23,8 @@ export const MainPage = () => {
   }, [setProblemList, setIsLoading]);
 
   return (
-    <div className="flex justify-center items-center py-3.5">
-      <div className="flex gap-4">
+    <div className="flex justify-center items-center p-3.5 h-screen">
+      <div className="flex gap-4 h-full">
         <SimilarProblemList similarProblemList={similarProblemList} />
         <ProblemList problemList={problemList} />
       </div>

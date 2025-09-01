@@ -28,7 +28,7 @@ export const ProblemList = () => {
   return (
     <div className="h-full flex flex-col px-4 pt-4 w-[480px] xl:w-[712px] border border-gray bg-gray rounded-xl">
       <span className="text-white body1-16-bold">학습지 상세 편집</span>
-      <div className="flex-1 flex flex-col gap-4 overflow-scroll mt-4">
+      <div className="flex-1 flex flex-col gap-4 overflow-auto mt-4">
         {problemList.length > 0 ? (
           problemList.map((problem, index) => (
             <ProblemCard

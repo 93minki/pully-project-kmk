@@ -17,7 +17,7 @@ export const SimilarProblemList = () => {
       {similarProblemList.length > 0 && (
         <span className="body1-16-bold text-gray-dark">유사 문항</span>
       )}
-      <div className="flex-1 flex flex-col gap-4 overflow-scroll">
+      <div className="flex-1 flex flex-col gap-4 overflow-auto">
         {similarProblemList.length > 0 ? (
           similarProblemList.map((problem, index) => (
             <ProblemCard

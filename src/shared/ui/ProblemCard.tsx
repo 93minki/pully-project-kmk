@@ -54,6 +54,7 @@ export const ProblemCard = ({
             className="object-contain"
             src={problemInfo.problemImageUrl}
             alt="problem_image"
+            loading="lazy"
           />
         </div>
       </div>

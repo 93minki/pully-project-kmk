@@ -1,69 +1,40 @@
-# React + TypeScript + Vite
+# 프리윌린 - 풀리팀 채용 과제
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 실행 방법
+```
+yarn install
+yarn dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 기술 스택
+- **Frontend**: React + TypeScript + TailwindCSS  
+- **상태관리**: Zustand
+- **아키텍처**: FSD (Feature-Sliced Design)
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 주요 기능
+- 문제 목록 관리 (삭제)
+- 유사 문제 검색 및 관리 (추가/교체)
+- 실시간 상태 동기화
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 설계 특징
+
+### 상태 관리
+- Zustand 기반 전역 상태 관리
+- 도메인별 Store 분리: `problemStore`, `similarProblemStore`, `selectProblemStore`
+
+### 컴포넌트 구조  
+- FSD 아키텍처로 Feature 단위 모듈화
+- 관심사 분리를 통한 독립성 확보
+- 공통 컴포넌트는 shared 레이어에서 관리
+
+## 폴더 구조
 ```
+├── app/ # 앱 설정, 스토어
+├── entities/ # 비즈니스 엔티티
+├── features/ # 핵심 기능
+├── shared/ # 공통 컴포넌트
+└── widgets/ # 복합 컴포넌트
+```
+## 실행 화면
+
+![Kapture 2025-09-01 at 10 19 27](https://github.com/user-attachments/assets/6616dbe4-8658-4abd-a478-699647569c99)
